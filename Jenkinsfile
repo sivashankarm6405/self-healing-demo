@@ -7,13 +7,19 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                bat 'mvn clean compile'
+                script {
+                    def status = bat(script: 'mvn clean compile > build.log 2>&1', returnStatus: true)
+                    if (status != 0) {
+                        error("Build failed — see build.log")
+                    }
+                }
             }
         }
     }
     post {
         failure {
-            echo "Pipeline failed — this is where the healing script will run"
+            echo "Pipeline failed — running healing script"
+            bat '"C:\\Users\\muthu\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" healing_script.py'
         }
         success {
             echo "Pipeline succeeded — no action required"
