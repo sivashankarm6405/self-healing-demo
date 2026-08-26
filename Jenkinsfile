@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Simulating a build step...'
-                sh 'exit 1'
+                bat 'exit /b 1'
             }
         }
     }
@@ -17,3 +17,4 @@ pipeline {
         }
     }
 }
+      
