@@ -7,8 +7,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Simulating a build step...'
-                bat 'exit /b 1'
+                bat 'mvn clean compile'
             }
         }
     }
