@@ -19,11 +19,12 @@ pipeline {
     post {
         failure {
             echo "Pipeline failed — running healing script"
-            bat '"C:\\Users\\muthu\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" healing_script.py'
+            withCredentials([usernamePassword(credentialsId: 'github-creds', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_TOKEN')]) {
+                bat '"C:\\Users\\muthu\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" healing_script.py'
+            }
         }
         success {
             echo "Pipeline succeeded — no action required"
         }
     }
 }
-      
