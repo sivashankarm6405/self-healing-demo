@@ -55,6 +55,10 @@ def run(cmd, env=None):
 
 if __name__ == "__main__":
     print("=== Healing Script Started ===")
+    run('git config --global user.email "jenkins@localhost"')
+    run('git config --global user.name "Jenkins Healing Bot"')
+
+    branch = "auto-fix/build-failure"
 
     git_user = os.environ.get("GIT_USER")
     git_token = os.environ.get("GIT_TOKEN")
