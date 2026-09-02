@@ -2,6 +2,6 @@ package com.example;
 
 public class App {
     public static void main(String[] args) {
-        System.out.println("Hello from self-healing pipeline")   // <-- missing semicolon on purpose
+        System.out.println("Hello from self-healing pipeline");  // <-- added semicolon
     }
 }
